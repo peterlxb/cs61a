@@ -43,6 +43,61 @@ To evaluate a call expression, Python will do the following:
 1. Evaluate the operator and operand subexpressions, then
 2. Apply the function that is the value of the operator subexpression to the arguments that are the values of the operand subexpressions.
 
+#### 1.3   Defining New Functions
+
+  ```python
+
+  def <name>(<formal parameters>):
+    return <return expression>
+
+
+  ```
+
+  Aspects of a functional abstraction.
+  To master the use of a functional abstraction, it is often useful to consider its three core attributes.
+  1.  The domain of a function is the set of arguments it can take.
+  2. The range of a function is the set of values it can return.
+  3. The intent of a function is the relationship it computes between inputs and output (as well as any side effects it might generate).
+
+#### 1.4   Designing Functions
+
+1. Each function should have exactly one job. That job should be identifiable with a short name and characterizable in a single line of text. Functions that perform multiple jobs in sequence should be divided into multiple functions.
+2. Don't repeat yourself is a central tenet of software engineering. The so-called DRY principle states that multiple fragments of code should not describe redundant logic. Instead, that logic should be implemented once, given a name, and applied multiple times. If you find yourself copying and pasting a block of code, you have probably found an opportunity for functional abstraction.
+3. Functions should be defined generally. Squaring is not in the Python Library precisely because it is a special case of the pow function, which raises numbers to arbitrary powers.
+
+
+##### 1.4.1   Documentation
+A function definition will often include documentation describing the function, called a docstring, which must be indented along with the function body. Docstrings are conventionally triple quoted. The first line describes the job of the function in one line. The following lines can describe arguments and clarify the behavior of the function:
+
+```python
+>>> def pressure(v, t, n):
+        """Compute the pressure in pascals of an ideal gas.
+
+        Applies the ideal gas law: http://en.wikipedia.org/wiki/Ideal_gas_law
+
+        v -- volume of gas, in cubic meters
+        t -- absolute temperature in degrees kelvin
+        n -- particles of gas
+        """
+        k = 1.38e-23  # Boltzmann's constant
+        return n * k * t / v
+```
+
+#####1.4.2   Default Argument Values
+
+```python
+
+>>> def pressure(v, t, n=6.022e23):
+      """Compute the pressure in pascals of an ideal gas.
+
+      v -- volume of gas, in cubic meters
+      t -- absolute temperature in degrees kelvin
+      n -- particles of gas (default: one mole)
+      """
+      k = 1.38e-23  # Boltzmann's constant
+      return n * k * t / v
+
+```
 For more details see [Functions of Programming](http://composingprograms.com/pages/12-elements-of-programming.html).
 
 ## Chapter 2: Building Abstractions with Data
