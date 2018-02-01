@@ -1,6 +1,6 @@
 # CS61a Structure and Interpretation of Computer Programs
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+Learning programming using Python
 
 ## Chapter 1: Building Abstractions with Functions
 
@@ -22,6 +22,26 @@ Syntax highlighted code block
 
 [Link](url) and ![Image](src)
 ```
+
+#### 1.2 Elements of Programming 编程的元素
+
+1. primitive expressions and statements, which represent the simplest building blocks that the language provides,
+2. means of combination, by which compound elements are built from simpler ones, and
+3. means of abstraction, by which compound elements can be named and manipulated as units.
+
+
+##### 1.2.4   Names and the Environment
+
+A critical aspect of a programming language is the means it provides for using names to refer to computational objects. If a value has been given a name, we say that the name binds to the value.
+
+In Python, we can establish new bindings using the assignment statement, which contains a name to the left of = and a value to the right:
+
+##### 1.2.5   Evaluating Nested Expressions
+
+To evaluate a call expression, Python will do the following:
+
+1. Evaluate the operator and operand subexpressions, then
+2. Apply the function that is the value of the operator subexpression to the arguments that are the values of the operand subexpressions.
 
 For more details see [Functions of Programming](http://composingprograms.com/pages/12-elements-of-programming.html).
 
@@ -99,10 +119,6 @@ Syntax highlighted code block
 
 For more details see [Data Processing](http://composingprograms.com/pages/41-introduction.html).
 
-## Jekyll Themes
+## The course home page
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/peterlxb/cs61a/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-## Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+The full course detail [Course info](https://cs61a.org/).
