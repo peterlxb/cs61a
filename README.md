@@ -1,12 +1,12 @@
-## CS61a Structure and Interpretation of Computer Programs
+# CS61a Structure and Interpretation of Computer Programs
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
-### Markdown
+## Chapter1
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+Elements of Programming
 
-```markdown
+```Python
 Syntax highlighted code block
 
 # Header 1
@@ -24,12 +24,12 @@ Syntax highlighted code block
 [Link](url) and ![Image](src)
 ```
 
-For more details see [GitHub Flavored Markdown](http://composingprograms.com/pages/12-elements-of-programming.html).
+For more details see [Elements of Programming](http://composingprograms.com/pages/12-elements-of-programming.html).
 
-### Jekyll Themes
+## Jekyll Themes
 
 Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/peterlxb/cs61a/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
 
-### Support or Contact
+## Support or Contact
 
 Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
