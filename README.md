@@ -82,7 +82,128 @@ A function definition will often include documentation describing the function, 
 
 ```
 
-### 1.5   Control 控制循环语句
+### 1.5   Control
+
+#### 1.5.1   Statements
+
+Rather than being evaluated, statements are executed. Each statement describes some change to the interpreter state, and executing a statement applies that change. As we have seen for return and assignment statements, executing statements can involve evaluating subexpressions contained within them.
+
+Sometimes it does make sense to have a function whose body is an expression, when a non-pure function like print is called.
+
+```python
+>>> def print_square(x):
+        print(square(x))
+```
+#### 1.5.2   Compound Statements
+Compound statements typically span multiple lines and start with a one-line header ending in a colon, which identifies the type of statement. Together, a header and an indented suite of statements is called a clause. A compound statement consists of one or more clauses:
+```Python
+
+<header>:
+    <statement>
+    <statement>
+    ...
+<separating header>:
+    <statement>
+    <statement>
+    ...
+...
+
+```
+
+We can understand the statements we have already introduced in these terms.
+
+1. Expressions, return statements, and assignment statements are simple statements.
+2. A def statement is a compound statement. The suite that follows the def header defines the function body.
+
+#### 1.5.3   Defining Functions II: Local Assignment
+
+Whenever a user-defined function is applied, the sequence of clauses in the suite of its definition is executed in a local environment — an environment starting with a local frame created by calling that function. A return statement redirects control: the process of function application terminates whenever the first return statement is executed, and the value of the return expression is the returned value of the function being applied.
+
+```pythyon
+>>> def percent_difference(x, y):
+        return 100 * abs(x-y) / x
+>>> percent_difference(40, 50)
+25.0
+```
+#### 1.5.4   Conditional Statements
+Conditional statements. A conditional statement in Python consists of a series of headers and suites: a required if clause, an optional sequence of elif clauses, and finally an optional else clause:
+
+```python
+if <expression>:
+    <suite>
+elif <expression>:
+    <suite>
+else:
+    <suite>
+```
+
+When executing a conditional statement, each clause is considered in order. The computational process of executing a conditional clause follows.
+
+1. Evaluate the header's expression.
+2. If it is a true value, execute the suite. Then, skip over all subsequent clauses in the conditional statement.
+
+Boolean operators. Three basic logical operators are also built into Python:
+
+```python
+>>> True and False
+False
+>>> True or False
+True
+>>> not False
+True
+```
+#### 1.5.5   Iteration
+
+We can use a while statement to enumerate n Fibonacci numbers. We need to track how many values we've created (k), along with the kth value (curr) and its predecessor (pred). Step through this function and observe how the Fibonacci numbers evolve one by one, bound to curr.
+
+```python
+def fib(n):
+	    """Compute the nth Fibonacci number, for n >= 2."""
+      pred, curr = 0, 1   # Fibonacci numbers 1 and 2
+      k = 2               # Which Fib number is curr?
+	    while k < n:
+	        pred, curr = curr, pred + curr
+	        k = k + 1
+      return curr
+
+	result = fib(8)
+```
+A while clause contains a header expression followed by a suite:
+
+```python
+while <expression>:
+    <suite>
+```
+
+To execute a while clause:
+
+1. Evaluate the header's expression.
+2. If it is a true value, execute the suite, then return to step 1.
+
+In step 2, the entire suite of the while clause is executed before the header expression is evaluated again.
+
+In order to prevent the suite of a while clause from being executed indefinitely, the suite should always change some binding in each pass.
+
+A while statement that does not terminate is called an infinite loop. Press <Control>-C to force Python to stop looping.
+
+#### 1.5.6   Testing
+
+Assertions. Programmers use assert statements to verify expectations, such as the output of a function being tested. An assert statement has an expression in a boolean context, followed by a quoted line of text (single or double quotes are both fine, but be consistent) that will be displayed if the expression evaluates to a false value.
+
+```python
+>>> assert fib(8) == 13, 'The 8th Fibonacci number should be 13'
+```
+
+A test function for fib should test several arguments, including extreme values of n.
+```python
+>>> def fib_test():
+        assert fib(2) == 1, 'The 2nd Fibonacci number should be 1'
+        assert fib(3) == 1, 'The 3rd Fibonacci number should be 1'
+        assert fib(50) == 7778742049, 'Error at the 50th Fibonacci number'
+```
+When writing Python in files, rather than directly into the interpreter, tests are typically written in the same file or a neighboring file with the suffix _test.py.
+
+
 
 ### 1.6   Higher-Order Functions
 ### 1.7   Recursive Functions
