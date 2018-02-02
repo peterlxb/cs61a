@@ -6,24 +6,6 @@ Learning programming using Python
 
 ### 1.1   Getting Started
 ### 1.2   Elements of Programming
-### 1.3   Defining New Functions
-### 1.4   Designing Functions
-### 1.5   Control
-### 1.6   Higher-Order Functions
-### 1.7   Recursive Functions
-
-```Python
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-
-[Link](url) and ![Image](src)
-```
-
-#### 1.2 Elements of Programming 编程的元素
 
 1. primitive expressions and statements, which represent the simplest building blocks that the language provides,
 2. means of combination, by which compound elements are built from simpler ones, and
@@ -43,7 +25,7 @@ To evaluate a call expression, Python will do the following:
 1. Evaluate the operator and operand subexpressions, then
 2. Apply the function that is the value of the operator subexpression to the arguments that are the values of the operand subexpressions.
 
-#### 1.3   Defining New Functions
+### 1.3   Defining New Functions
 
   ```python
 
@@ -59,7 +41,8 @@ To evaluate a call expression, Python will do the following:
   2. The range of a function is the set of values it can return.
   3. The intent of a function is the relationship it computes between inputs and output (as well as any side effects it might generate).
 
-#### 1.4   Designing Functions
+
+### 1.4   Designing Functions
 
 1. Each function should have exactly one job. That job should be identifiable with a short name and characterizable in a single line of text. Functions that perform multiple jobs in sequence should be divided into multiple functions.
 2. Don't repeat yourself is a central tenet of software engineering. The so-called DRY principle states that multiple fragments of code should not describe redundant logic. Instead, that logic should be implemented once, given a name, and applied multiple times. If you find yourself copying and pasting a block of code, you have probably found an opportunity for functional abstraction.
@@ -98,6 +81,25 @@ A function definition will often include documentation describing the function, 
       return n * k * t / v
 
 ```
+
+### 1.5   Control 控制循环语句
+
+### 1.6   Higher-Order Functions
+### 1.7   Recursive Functions
+
+```Python
+Syntax highlighted code block
+
+# Header 1
+## Header 2
+### Header 3
+
+
+[Link](url) and ![Image](src)
+```
+
+
+
 For more details see [Functions of Programming](http://composingprograms.com/pages/12-elements-of-programming.html).
 
 ## Chapter 2: Building Abstractions with Data
