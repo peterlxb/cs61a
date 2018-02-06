@@ -282,7 +282,57 @@ This example illustrates two related big ideas in computer science. First, namin
 
 
 #### 1.6.3   Defining Functions III: Nested Definitions
+```python
+>>> def sqrt(a):
+        def sqrt_update(x):
+            return average(x, a/x)
+        def sqrt_close(x):
+            return approx_eq(x * x, a)
+        return improve(sqrt_update, sqrt_close)
+```
 
+Like local assignment, local def statements only affect the current local frame. These functions are only in scope while sqrt is being evaluated. Consistent with our evaluation procedure, these local def statements don't even get evaluated until sqrt is called.
+
+
+Lexical scope. Locally defined functions also have access to the name bindings in the scope in which they are defined. In this example, sqrt_update refers to the name a, which is a formal parameter of its enclosing function sqrt. This discipline of sharing names among nested definitions is called lexical scoping. Critically, the inner functions have access to the names in the environment where they are defined (not where they are called).
+
+We require two extensions to our environment model to enable lexical scoping.
+
+1. Each user-defined function has a parent environment: the environment in which it was defined.
+2. When a user-defined function is called, its local frame extends its parent environment.
+
+```Python
+def average(x, y):
+    return (x + y)/2
+
+def improve(update, close, guess=1):
+	   while not close(guess):
+	       guess = update(guess)
+	   return guess
+
+def approx_eq(x, y, tolerance=1e-3):
+	   return abs(x - y) < tolerance
+
+def sqrt(a):
+	   def sqrt_update(x):
+	       return average(x, a/x)
+	   def sqrt_close(x):
+	       return approx_eq(x * x, a)
+	   return improve(sqrt_update, sqrt_close)
+
+result = sqrt(256)
+```
+The most critical part of this evaluation procedure is the transfer of the parent for sqrt_update to the frame created by calling sqrt_update. This frame is also annotated with [parent=f1].
+
+Extended Environments. An environment can consist of an arbitrarily long chain of frames, which always concludes with the global frame. Previous to this sqrt example, environments had at most two frames: a local frame and the global frame. By calling functions that were defined within other functions, via nested def statements, we can create longer chains. The environment for this call to sqrt_update consists of three frames: the local sqrt_update frame, the sqrt frame in which sqrt_update was defined (labeled f1), and the global frame.
+
+The return expression in the body of sqrt_update can resolve a value for a by following this chain of frames. Looking up a name finds the first value bound to that name in the current environment. Python checks first in the sqrt_update frame -- no a exists. Python checks next in the parent frame, f1, and finds a binding for a to 256.
+
+Hence, we realize two key advantages of lexical scoping in Python.
+
+1. The names of a local function do not interfere with names external to the function in which it is defined, because the local function name will be bound in the current local environment in which it was defined, rather than the global environment.
+2. A local function can access the environment of the enclosing function, because the body of the local function is evaluated in an environment that extends the evaluation environment in which it was defined.
+The sqrt_update function carries with it some data: the value for a referenced in the environment in which it was defined. Because they "enclose" information in this way, locally defined functions are often called closures.
 
 #### 1.6.4   Functions as Returned Values
 #### 1.6.5   Example: Newton's Methods
