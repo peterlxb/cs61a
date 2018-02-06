@@ -255,8 +255,48 @@ def <name>(n):
 
 ```
 
-### 1.7   Recursive Functions
+#### 1.6.2   Functions as General Methods
 
+By tracing through the steps of evaluation, we can see how this result is computed. First, a local frame for improve is constructed with bindings for update, close, and guess. In the body of improve, the name close is bound to square_close_to_successor, which is called on the initial value of guess. Trace through the rest of the steps to see the computational process that evolves to compute the golden ratio.
+
+```Python
+def improve(update, close, guess=1):
+    while not close(guess):
+        guess = update(guess)
+    return guess
+
+def golden_update(guess):
+    return 1/guess + 1
+
+def square_close_to_successor(guess):
+    return approx_eq(guess * guess, guess + 1)
+
+def approx_eq(x, y, tolerance=1e-3):
+    return abs(x - y) < tolerance
+
+phi = improve(golden_update,square_close_to_successor)
+
+
+```
+This example illustrates two related big ideas in computer science. First, naming and functions allow us to abstract away a vast amount of complexity. While each function definition has been trivial, the computational process set in motion by our evaluation procedure is quite intricate. Second, it is only by virtue of the fact that we have an extremely general evaluation procedure for the Python language that small components can be composed into complex processes. Understanding the procedure of interpreting programs allows us to validate and inspect the process we have created.
+
+
+#### 1.6.3   Defining Functions III: Nested Definitions
+
+
+#### 1.6.4   Functions as Returned Values
+#### 1.6.5   Example: Newton's Methods
+#### 1.6.6   Currying
+#### 1.6.7   Lambda Expressions
+#### 1.6.8   Abstractions and First-Class Functions
+#### 1.6.9   Function Decorators
+
+### 1.7   Recursive Functions
+#### 1.7.1   The Anatomy of Recursive Functions
+#### 1.7.2   Mutual Recursion
+#### 1.7.3   Printing in Recursive Functions
+#### 1.7.4   Tree Recursion
+#### 1.7.5   Example: Partitions
 ```Python
 Syntax highlighted code block
 
