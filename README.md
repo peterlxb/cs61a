@@ -206,6 +206,55 @@ When writing Python in files, rather than directly into the interpreter, tests a
 
 
 ### 1.6   Higher-Order Functions
+#### 1.6.1   Functions as Arguments
+Consider the following three functions, which all compute summations. The first, sum_naturals, computes the sum of natural numbers up to n:
+
+```python
+>>> def sum_naturals(n):
+        total, k = 0, 1
+        while k <= n:
+            total, k = total + k, k + 1
+        return total
+>>> sum_naturals(100)
+5050
+```
+
+The second, sum_cubes, computes the sum of the cubes of natural numbers up to n.
+
+```python
+>>> def sum_cubes(n):
+        total, k = 0, 1
+        while k <= n:
+            total, k = total + k*k*k, k + 1
+        return total
+>>> sum_cubes(100)
+25502500
+```
+The third, pi_sum, computes the sum of terms in the series
+
+
+which converges to pi very slowly.
+```python
+>>> def pi_sum(n):
+        total, k = 0, 1
+        while k <= n:
+            total, k = total + 8 / ((4*k-3) * (4*k-1)), k + 1
+        return total
+>>> pi_sum(100)
+3.1365926848388144
+```
+
+These three functions clearly share a common underlying pattern. They are for the most part identical, differing only in name and the function of k used to compute the term to be added. We could generate each of the functions by filling in slots in the same template:
+
+```python
+def <name>(n):
+    total, k = 0, 1
+    while k <= n:
+        total, k = total + <term>(k), k + 1
+    return total
+
+```
+
 ### 1.7   Recursive Functions
 
 ```Python
